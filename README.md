@@ -21,7 +21,7 @@ TaskReceipt is a lightweight desktop app for tracking tasks, courses, categories
 
 ## Preview
 
-<p align="center">
+<p>
   <img src="taskreceipt.png" alt="TaskReceipt Screenshot" width="350">
 </p>
 
