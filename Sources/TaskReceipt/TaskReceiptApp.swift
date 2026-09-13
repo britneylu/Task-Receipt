@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct ReceiptTodoApp: App {
+struct TaskReceiptApp: App {
 
     @NSApplicationDelegateAdaptor(AppDelegate.self)
     var appDelegate

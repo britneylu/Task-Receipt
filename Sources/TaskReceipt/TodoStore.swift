@@ -46,9 +46,11 @@ final class TodoStore: ObservableObject {
     }
 
     func toggleTask(_ task: TodoItem) {
-        guard let index = tasks.firstIndex(where: {
-            $0.id == task.id
-        }) else {
+        guard
+            let index = tasks.firstIndex(where: {
+                $0.id == task.id
+            })
+        else {
             return
         }
 
@@ -91,5 +93,20 @@ final class TodoStore: ObservableObject {
         } catch {
             print("Failed to load tasks: \(error)")
         }
+    }
+
+    func updateTask(
+        id: UUID,
+        title: String,
+        category: String,
+        dueDate: Date
+    ) {
+        guard let index = tasks.firstIndex(where: { $0.id == id }) else {
+            return
+        }
+
+        tasks[index].title = title
+        tasks[index].category = category
+        tasks[index].dueDate = dueDate
     }
 }

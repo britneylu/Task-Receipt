@@ -3,19 +3,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "ReceiptTodo",
+    name: "TaskReceipt",
     platforms: [
         .macOS(.v14)
     ],
     products: [
         .executable(
-            name: "ReceiptTodo",
-            targets: ["ReceiptTodo"]
+            name: "TaskReceipt",
+            targets: ["TaskReceipt"]
         )
     ],
     targets: [
         .executableTarget(
-            name: "ReceiptTodo"
+            name: "TaskReceipt"
         )
     ]
 )

@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:TaskReceipt}",
+            "name": "Debug TaskReceipt",
+            "target": "TaskReceipt",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug TaskReceipt"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:TaskReceipt}",
+            "name": "Release TaskReceipt",
+            "target": "TaskReceipt",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release TaskReceipt"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:TaskReceipt}",
+            "name": "Debug TaskReceipt",
+            "target": "TaskReceipt",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug TaskReceipt"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:TaskReceipt}",
+            "name": "Release TaskReceipt",
+            "target": "TaskReceipt",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release TaskReceipt"
+        }
+    ]
+}

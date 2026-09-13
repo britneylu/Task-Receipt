@@ -6,6 +6,7 @@ struct TaskRow: View {
     let task: TodoItem
 
     @State private var isHovering = false
+    @State private var showingEditTask = false
 
     private let ink = Color(
         red: 0.12,
@@ -34,7 +35,7 @@ struct TaskRow: View {
             }
             .buttonStyle(.plain)
 
-            // Task name + category
+            // Task title + category
             VStack(
                 alignment: .leading,
                 spacing: 4
@@ -59,7 +60,9 @@ struct TaskRow: View {
                             design: .monospaced
                         )
                     )
-                    .foregroundStyle(ink.opacity(0.5))
+                    .foregroundStyle(
+                        ink.opacity(0.5)
+                    )
             }
 
             Spacer()
@@ -96,11 +99,13 @@ struct TaskRow: View {
                                 design: .monospaced
                             )
                         )
-                        .foregroundStyle(ink.opacity(0.65))
+                        .foregroundStyle(
+                            ink.opacity(0.65)
+                        )
                 }
             }
 
-            // Delete button appears only on hover
+            // Delete button only appears on hover
             if isHovering {
                 Button {
                     store.deleteTask(task)
@@ -112,18 +117,52 @@ struct TaskRow: View {
                                 weight: .bold
                             )
                         )
-                        .foregroundStyle(ink.opacity(0.45))
+                        .foregroundStyle(
+                            ink.opacity(0.45)
+                        )
                 }
                 .buttonStyle(.plain)
                 .help("Delete task")
             }
         }
         .padding(.vertical, 11)
+
+        // Makes the full row clickable
+        .contentShape(Rectangle())
+
+        // Hover effect
         .onHover { hovering in
             isHovering = hovering
         }
-        .opacity(task.isCompleted ? 0.4 : 1)
+
+        // Click anywhere on the row to edit
+        .onTapGesture {
+            showingEditTask = true
+        }
+
+        // Fade completed tasks
+        .opacity(
+            task.isCompleted
+                ? 0.4
+                : 1
+        )
+
+        // Edit sheet
+        .sheet(
+            isPresented: $showingEditTask
+        ) {
+            EditTaskView(task: task)
+                .environmentObject(store)
+        }
+
+        // Right-click menu
         .contextMenu {
+
+            Button("Edit Task") {
+                showingEditTask = true
+            }
+
+            Divider()
 
             Button(
                 task.isCompleted
@@ -143,6 +182,8 @@ struct TaskRow: View {
             }
         }
     }
+
+    // MARK: - Overdue
 
     private var isOverdue: Bool {
         Calendar.current.startOfDay(
